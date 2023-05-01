@@ -3,7 +3,7 @@ name: Develop Workflow
 on:
   push:
     branches:
-      - develop
+      - feature/issue#1
 
 concurrency:
   group: environment-${{ github.ref }}
