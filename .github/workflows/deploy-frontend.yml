@@ -9,7 +9,7 @@ on:
       CONTENTFUL_ENVIRONMENT:
         required: true
         type: string
-    aws_secrets:
+    secrets:
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
