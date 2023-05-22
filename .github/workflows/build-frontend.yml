@@ -23,16 +23,14 @@ jobs:
           node-version: '16.x'
           cache: 'npm'
 
-      -name: Update NPM
-       run: npm install -g npm@8
+      - name: Update NPM
+        run: npm install -g npm@8
 
-      -name: Run Linters
-       run: npm run linters-ci
+      - name: Run Linters
+        run: npm run linters-ci
 
-      -name: Install dependencies
-       run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-      -name: Build React site
-       run: 
-        rm -rf ./out
-        npm run build
+      - name: Build React site
+        run: rm -rf ./out npm run build
