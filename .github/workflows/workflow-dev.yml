@@ -11,12 +11,12 @@ concurrency:
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@feature/issue#1
     with:
         CI_ENV: develop
         CONTENTFUL_ENVIRONMENT: 'develop'
   deploy:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/deploy-frontend.yml
+    uses: practicodevops/practico-devops-frontend/.github/workflows/deploy-frontend.yml@feature/issue#1
     with:
       CI_ENV: develop
       CONTENTFUL_ENVIRONMENT: 'develop'
