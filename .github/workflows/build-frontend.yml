@@ -36,4 +36,6 @@ jobs:
         run: npm ci
 
       - name: Build React site
-        run: rm -rf ./out npm run build
+        run: |
+          rm -rf ./dist 
+          npm run build
