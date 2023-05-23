@@ -35,6 +35,4 @@ jobs:
           aws-region: ${{secrets.AWS_DEFAULT_REGION}}
 
       - name: S3 Deploy
-        run: |
-          cd dist
-          aws s3 sync ./ s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
+        run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
