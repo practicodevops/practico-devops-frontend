@@ -39,3 +39,4 @@ jobs:
         run: |
           rm -rf ./dist 
           npm run build
+          ls -la
