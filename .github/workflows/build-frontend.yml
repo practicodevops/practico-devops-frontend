@@ -39,4 +39,14 @@ jobs:
         run: |
           rm -rf ./dist 
           npm run build
-          ls -la
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{secrets.AWS_DEFAULT_REGION}}
+
+      - name: S3 Deploy
+        run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET_DEV }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
