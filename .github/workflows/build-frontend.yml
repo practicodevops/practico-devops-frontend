@@ -27,7 +27,7 @@ jobs:
         run: npm install -g npm@8
 
       - name: Run Linters
-        run: npm run linters-ci
+        run: npm run lint
 
       - name: Install dependencies
         run: npm ci
