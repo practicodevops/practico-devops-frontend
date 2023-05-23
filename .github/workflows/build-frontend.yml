@@ -9,6 +9,17 @@ on:
       CONTENTFUL_ENVIRONMENT:
         required: true
         type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_DEFAULT_REGION:
+        required: true
+      AWS_SESSION_TOKEN:
+        required: true
+      S3_ORIGIN_BUCKET:
+        required: true
 
 jobs:
   build:
@@ -49,4 +60,4 @@ jobs:
           aws-region: ${{secrets.AWS_DEFAULT_REGION}}
 
       - name: S3 Deploy
-        run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET_DEV }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
+        run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
