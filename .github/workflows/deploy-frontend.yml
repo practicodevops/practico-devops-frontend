@@ -26,6 +26,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React site
+        run: |
+          rm -rf ./dist 
+          npm run build
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
