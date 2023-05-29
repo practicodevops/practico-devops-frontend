@@ -1,0 +1,63 @@
+name: Build And Deploy Frontend
+
+on:
+  workflow_call:
+    inputs:
+      CI_ENV:
+        required: true
+        type: string
+      CONTENTFUL_ENVIRONMENT:
+        required: true
+        type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_DEFAULT_REGION:
+        required: true
+      AWS_SESSION_TOKEN:
+        required: true
+      S3_ORIGIN_BUCKET:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '16.x'
+          cache: 'npm'
+
+      - name: Update NPM
+        run: npm install -g npm@8
+
+      - name: Install EsLint
+        run: npm install eslint-config-important-stuff --save-dev
+
+      - name: Run Linters
+        run: npm run lint
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build React site
+        run: |
+          rm -rf ./dist 
+          npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{secrets.AWS_DEFAULT_REGION}}
+
+      - name: S3 Deploy
+        run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
