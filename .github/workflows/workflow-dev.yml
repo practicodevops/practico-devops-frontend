@@ -3,7 +3,7 @@ name: Develop Workflow
 on:
   push:
     branches:
-      - feature/issue#1
+      - develop
 
 concurrency:
   group: environment-${{ github.ref }}
@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-and-delpoy:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-and-deploy-frontend.yml@feature/issue#1
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-and-deploy-frontend.yml@develop
     with:
         CI_ENV: develop
         CONTENTFUL_ENVIRONMENT: 'develop'
