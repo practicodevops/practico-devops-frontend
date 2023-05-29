@@ -2,7 +2,7 @@ name: Develop Workflow for Pull requests
 
 on:
   pull_request:
-    types: [openes, reopened, edited]
+    types: [opened, reopened, edited]
 
 concurrency:
   group: enviroment-${{ github.ref }}
