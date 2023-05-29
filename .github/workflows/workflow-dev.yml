@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   build-and-delpoy:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@feature/issue#1
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-and-deploy-frontend.yml@feature/issue#1
     with:
         CI_ENV: develop
         CONTENTFUL_ENVIRONMENT: 'develop'
