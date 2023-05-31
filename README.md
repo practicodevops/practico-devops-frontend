@@ -4,7 +4,7 @@
 
 This is an example microfrontend repo demonstrating how to use [single-spa](https://single-spa.js.org). You can see the code running at https://react.microfrontends.app.
 
-## How does it work?
+## How does it work??
 
 [Full article](https://single-spa.js.org/docs/recommended-setup)
 
