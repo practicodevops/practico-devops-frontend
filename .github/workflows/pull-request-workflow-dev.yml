@@ -10,4 +10,4 @@ concurrency:
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@develop
