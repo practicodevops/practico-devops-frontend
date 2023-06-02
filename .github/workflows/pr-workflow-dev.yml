@@ -3,6 +3,9 @@ name: Develop Workflow for Pull requests
 on:
   pull_request:
     types: [opened, reopened, edited]
+    branches:
+      - bugFix/issue#6
+
 
 concurrency:
   group: environment-${{ github.ref }}
