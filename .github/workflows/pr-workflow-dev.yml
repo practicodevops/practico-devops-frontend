@@ -1,0 +1,13 @@
+name: Develop Workflow for Pull requests
+
+on:
+  pull_request:
+    types: [opened, reopened, edited]
+
+concurrency:
+  group: environment-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@bugFix/issue#6
