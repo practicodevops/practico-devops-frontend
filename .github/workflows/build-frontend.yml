@@ -1,4 +1,7 @@
-name: Build Frontend
+name: Build Frontend 
+
+on:
+  workflow_call:
 
 jobs:
   build:

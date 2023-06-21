@@ -1,4 +1,4 @@
-name: Build And Deploy Frontend
+name: Build And Deploy Frontend 
 
 on:
   workflow_call:
