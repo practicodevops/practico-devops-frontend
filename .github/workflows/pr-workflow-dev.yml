@@ -18,4 +18,4 @@ jobs:
     steps:
       - name: echo
         run: |
-          echo "The branch that triggered this workflow is ${{ github.ref }}"
+          echo "The branch that triggered this workflow is ${{ github.base_ref }}"
