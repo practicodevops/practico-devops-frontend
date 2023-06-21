@@ -17,4 +17,5 @@ jobs:
   testeando:
     runs-on: ubuntu-latest
     steps: 
-      - name: Print branch name run: | echo "The branch that triggered this workflow is ${{ github.ref }}"
+      - name: echo
+        run: | echo "The branch that triggered this workflow is ${{ github.ref }}"
