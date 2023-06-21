@@ -15,17 +15,4 @@ concurrency:
 
 jobs:
   build:
-    env:
-      base_branch: github.base_ref
-    steps:
-      - name: develop condition
-        if: base_branch == 'develop'
-        uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@develop
-   
-      - name: staging condition
-        if: base_branch == 'staging'
-        uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@staging
-
-      - name: main condition
-        if: base_branch == 'main'
-        uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@main
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{github.base_ref}}
