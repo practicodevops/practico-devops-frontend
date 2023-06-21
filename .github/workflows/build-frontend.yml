@@ -19,8 +19,8 @@ jobs:
       - name: Update NPM
         run: npm install -g npm@8
 
-      - name: Install EsLint
-        run: npm install eslint-config-important-stuff --save-dev
+      # - name: Install EsLint
+      #   run: npm install eslint-config-important-stuff --save-dev
 
       - name: Run Linters
         run: npm run lint
