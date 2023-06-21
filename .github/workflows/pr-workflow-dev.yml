@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [opened, reopened, edited]
     branches:
-      - bugFix/issue#6
+      - develop
 
 
 concurrency:
@@ -13,4 +13,4 @@ concurrency:
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@bugFix/issue#6
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@develop
