@@ -10,9 +10,9 @@ on:
 
 
 concurrency:
-  group: environment-${{ github.ref }}
+  group: environment-${{github.ref}}
   cancel-in-progress: true
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{ github.ref }}
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{github.ref}}
