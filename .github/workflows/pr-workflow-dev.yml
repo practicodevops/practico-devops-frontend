@@ -14,8 +14,5 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{github.ref}}
-
     steps: 
     - name: Print branch name run: | echo "The branch that triggered this workflow is ${{ github.ref }}"
