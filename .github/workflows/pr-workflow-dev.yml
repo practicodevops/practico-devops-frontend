@@ -1,10 +1,12 @@
-name: Develop Workflow for Pull requests
+name: Workflow for Pull requests
 
 on:
   pull_request:
     types: [opened, reopened, edited]
     branches:
       - develop
+      - staging
+      - main
 
 
 concurrency:
@@ -13,4 +15,4 @@ concurrency:
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@develop
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{ github.ref }}
