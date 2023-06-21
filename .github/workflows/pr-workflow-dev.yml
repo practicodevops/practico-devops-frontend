@@ -1,21 +1,18 @@
 name: Workflow for Pull requests
+
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
-      - edited
+    types: [opened, reopened, edited]
     branches:
       - develop
       - staging
       - main
+
+
 concurrency:
   group: environment-${{github.ref}}
   cancel-in-progress: true
+
 jobs:
-  testeando:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo
-        run: |
-          echo "The branch that triggered this workflow is ${{ github.base_ref }}"
+  build:
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{github.base_ref}}
