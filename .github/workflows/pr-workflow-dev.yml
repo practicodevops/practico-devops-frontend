@@ -15,4 +15,6 @@ concurrency:
 
 jobs:
   build:
-    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@${{github.base_ref}}
+    env:
+      branch: ${{github.base_ref}}
+    uses: practicodevops/practico-devops-frontend/.github/workflows/build-frontend.yml@$branch
