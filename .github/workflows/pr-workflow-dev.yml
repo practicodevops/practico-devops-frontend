@@ -1,21 +1,21 @@
 name: Workflow for Pull requests
-
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types:
+      - opened
+      - reopened
+      - edited
     branches:
       - develop
       - staging
       - main
-
-
 concurrency:
   group: environment-${{github.ref}}
   cancel-in-progress: true
-
 jobs:
   testeando:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: echo
-        run: | echo "The branch that triggered this workflow is ${{ github.ref }}"
+        run: |
+          echo "The branch that triggered this workflow is ${{ github.ref }}"
