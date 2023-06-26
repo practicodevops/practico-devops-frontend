@@ -6,7 +6,7 @@ on:
       - staging
 
 concurrency:
-  group: enviroment-${{github.ref}}
+  group: environment-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
