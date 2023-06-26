@@ -1,0 +1,31 @@
+name: Build Frontend 
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with: 
+          node-version: '16.x'
+          cache: 'npm'
+
+      - name: Update NPM
+        run: npm install -g npm@8
+        
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linters
+        run: npm run lint
+
+      - name: Build React site
+        run: |
+          rm -rf ./dist 
+          npm run build
