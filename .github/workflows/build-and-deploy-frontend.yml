@@ -24,7 +24,7 @@ on:
         required: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -62,7 +62,7 @@ jobs:
         run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
   sonarcloud:
     name: SonarCloud
-    needs: build
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
