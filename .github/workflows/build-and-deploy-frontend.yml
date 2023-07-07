@@ -50,6 +50,12 @@ jobs:
           rm -rf ./dist 
           npm run build
 
+  deploy:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -60,14 +66,20 @@ jobs:
 
       - name: S3 Deploy
         run: aws s3 sync ./dist s3://${{ secrets.S3_ORIGIN_BUCKET }} --metadata-directive 'REPLACE' --cache-control no-cache,no-store,must-revalidate --delete
+
   sonarcloud:
+  
     name: SonarCloud
-    needs: build
+
+    needs: deploy
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
