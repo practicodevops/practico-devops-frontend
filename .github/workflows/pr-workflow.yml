@@ -16,3 +16,5 @@ concurrency:
 jobs:
   build:
     uses: ./.github/workflows/build-frontend.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
